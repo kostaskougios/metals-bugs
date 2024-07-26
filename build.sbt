@@ -22,6 +22,10 @@ val CommonsMath3 = "org.apache.commons" % "commons-math3"   % "3.6.1"
 
 val Avro4s = "com.sksamuel.avro4s" %% "avro4s-core" % "5.0.9"
 val Snappy = "org.xerial.snappy"    % "snappy-java" % "1.1.10.5"
+val Godot  = Seq(
+  "com.utopia-rise" % "godot-library-debug"           % "0.9.1-4.2.2",
+  "com.utopia-rise" % "godot-kotlin-symbol-processor" % "0.9.1-4.2.2"
+)
 
 val commonSettings = Seq(
   version     := "1.0",
@@ -37,7 +41,7 @@ lazy val lib              = project
 lazy val `easygame-model` = project
   .settings(
     commonSettings,
-    libraryDependencies ++= Seq(ScalaTest)
+    libraryDependencies ++= Seq(ScalaTest) ++ Godot
   )
   .dependsOn(lib % "compile->compile; test->test")
 
